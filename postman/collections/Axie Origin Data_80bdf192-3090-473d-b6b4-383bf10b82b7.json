@@ -1,0 +1,298 @@
+{
+    "info": {
+        "_postman_id": "5f638ac1-dd86-4484-bc2a-06b835ce3aef",
+        "name": "Axie Origin Data",
+        "description": "This API about Axie Infinity: Origin will provide all the information you need about this NFT game 💪\n\nContact Support:\n Name: Tony Duong\n Email: tony.duong.102@gmail.com",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "api/v1/cards",
+            "item": [
+                {
+                    "name": "Get All Cards",
+                    "id": "7f88b31f-a330-42eb-b59f-58e9dbcaff1b",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/cards",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "cards"
+                            ]
+                        },
+                        "description": "Retrieve all the Axie Infinity: Origin cards"
+                    },
+                    "response": [
+                        {
+                            "id": "ae1216e5-7a57-421a-933f-c46aef3df2ab",
+                            "name": "Cards found",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/cards",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "cards"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n  \"id\": 142,\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Smith\",\n  \"email\": \"alice.smith@gmail.com\",\n  \"dateOfBirth\": \"1997-10-31\",\n  \"emailVerified\": true,\n  \"signUpDate\": \"2019-08-24\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Card by ID",
+                    "id": "ef3c6a57-9d4e-40de-8df7-3d960ca95223",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/cards/:id",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "cards",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "description": "Retrieve a card by ID"
+                    },
+                    "response": [
+                        {
+                            "id": "b4cbcf85-ea0a-4557-8b1f-9997953fd2e5",
+                            "name": "Card found",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/cards/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "cards",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n  \"id\": 2389860,\n  \"class\": \"aquatic\",\n  \"part\": \"back\",\n  \"energyCost\": 0,\n  \"name\": \"sunt in qui pariatur\",\n  \"value\": 0,\n  \"effect\": \"heal\",\n  \"description\": \"ullamco commodo\",\n  \"abilities\": [\n    \"secret\",\n    \"power\"\n  ]\n}"
+                        },
+                        {
+                            "id": "d25ac301-50bd-42c7-85e3-83791a0b5188",
+                            "name": "Card not found",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/cards/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "cards",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Not Found",
+                            "code": 404,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Search for Cards",
+                    "id": "95b7d23b-78c8-400a-9ce1-f4e75742faff",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/cards/search?string=<string>&class=<array>&part=<array>&energyCost=<array>&tags=<array>",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "cards",
+                                "search"
+                            ],
+                            "query": [
+                                {
+                                    "key": "string",
+                                    "value": "<string>",
+                                    "description": "Searched string (`name` and `description` fields)"
+                                },
+                                {
+                                    "key": "class",
+                                    "value": "<array>",
+                                    "description": "Searched classes"
+                                },
+                                {
+                                    "key": "part",
+                                    "value": "<array>",
+                                    "description": "Searched part"
+                                },
+                                {
+                                    "key": "energyCost",
+                                    "value": "<array>",
+                                    "description": "Search energy cost"
+                                },
+                                {
+                                    "key": "tags",
+                                    "value": "<array>",
+                                    "description": "Searched tags"
+                                }
+                            ]
+                        },
+                        "description": "Search for specific cards"
+                    },
+                    "response": [
+                        {
+                            "id": "708d2851-641e-4aa5-815d-b6b0db069a04",
+                            "name": "Search results",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/cards/search?string=<string>&class=<array>&part=<array>&energyCost=<array>&tags=<array>",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "cards",
+                                        "search"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "string",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "key": "class",
+                                            "value": "<array>"
+                                        },
+                                        {
+                                            "key": "part",
+                                            "value": "<array>"
+                                        },
+                                        {
+                                            "key": "energyCost",
+                                            "value": "<array>"
+                                        },
+                                        {
+                                            "key": "tags",
+                                            "value": "<array>"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "[\n  {\n    \"id\": 50943516,\n    \"class\": \"reptile\",\n    \"part\": \"mouth\",\n    \"energyCost\": 0,\n    \"name\": \"Ut magna sint\",\n    \"value\": 0,\n    \"effect\": \"heal\",\n    \"description\": \"dolore nisi in sed\",\n    \"abilities\": [\n      \"attack\",\n      \"power\"\n    ]\n  },\n  {\n    \"id\": 40293850,\n    \"class\": \"plant\",\n    \"part\": \"eyes\",\n    \"energyCost\": 0,\n    \"name\": \"labore officia\",\n    \"value\": 0,\n    \"effect\": \"shield\",\n    \"description\": \"id magn\",\n    \"abilities\": [\n      \"banish\",\n      \"attack\"\n    ]\n  }\n]"
+                        }
+                    ]
+                }
+            ],
+            "id": "ab5d818d-8268-4467-abd6-2d5fbbffab8f"
+        }
+    ],
+    "variable": [
+        {
+            "id": "4a173350-9006-45d8-8445-4fb5a4922599",
+            "key": "baseUrl",
+            "value": "http://localhost:3000",
+            "type": "string"
+        }
+    ]
+}
