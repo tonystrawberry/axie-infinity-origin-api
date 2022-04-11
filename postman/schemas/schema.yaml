@@ -17,7 +17,8 @@ paths:
     parameters: []
     get:
       summary: Get All Cards
-      tags: []
+      tags: 
+        - oauth
       responses:
         '200':
           description: Cards found
@@ -29,12 +30,13 @@ paths:
                   $ref: '#/components/schemas/Card'
       operationId: get-api-v1-cards
       description: 'Retrieve all the Axie Infinity: Origin cards'
-      tags:
-        - cards
+        
   '/api/v1/cards/:id':
     parameters: []
     get:
       summary: Get Card by ID
+      tags: 
+        - oauth
       operationId: 'get-api-v1-cards-:id'
       responses:
         '200':
@@ -46,12 +48,11 @@ paths:
         '404':
           description: Card not found
       description: Retrieve a card by ID
-      tags:
-        - cards
   /api/v1/cards/search:
     post:
       summary: Search for Cards
-      tags: []
+      tags: 
+        - oauth
       requestBody:
         content:
           application/json:
@@ -76,8 +77,7 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/EnumTag'
-        tags:
-        - cards
+
       responses:
         '200':
           description: Search results
