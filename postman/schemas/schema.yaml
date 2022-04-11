@@ -18,7 +18,7 @@ paths:
     get:
       summary: Get All Cards
       tags: 
-        - oauth
+        - cards
       responses:
         '200':
           description: Cards found
@@ -36,7 +36,7 @@ paths:
     get:
       summary: Get Card by ID
       tags: 
-        - oauth
+        - cards
       operationId: 'get-api-v1-cards-:id'
       responses:
         '200':
@@ -52,7 +52,7 @@ paths:
     post:
       summary: Search for Cards
       tags: 
-        - oauth
+        - cards
       requestBody:
         content:
           application/json:
