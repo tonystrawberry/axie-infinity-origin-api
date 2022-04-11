@@ -72,14 +72,9 @@
                     "id": "ef3c6a57-9d4e-40de-8df7-3d960ca95223",
                     "request": {
                         "method": "GET",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            }
-                        ],
+                        "header": [],
                         "url": {
-                            "raw": "{{baseUrl}}/api/v1/cards/:id",
+                            "raw": "{{baseUrl}}/api/v1/cards/aquatic-back-anome",
                             "host": [
                                 "{{baseUrl}}"
                             ],
@@ -87,12 +82,7 @@
                                 "api",
                                 "v1",
                                 "cards",
-                                ":id"
-                            ],
-                            "variable": [
-                                {
-                                    "key": "id"
-                                }
+                                "aquatic-back-anome"
                             ]
                         },
                         "description": "Retrieve a card by ID"
@@ -178,15 +168,24 @@
                     "name": "Search for Cards",
                     "id": "95b7d23b-78c8-400a-9ce1-f4e75742faff",
                     "request": {
-                        "method": "GET",
+                        "method": "POST",
                         "header": [
                             {
                                 "key": "Accept",
                                 "value": "application/json"
                             }
                         ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"string\": \"string\",\n  \"class\": [\"beast\"],\n  \"part\": [\"back\"],\n  \"energyCost\": [2],\n  \"tags\": [\"tags\"]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
                         "url": {
-                            "raw": "{{baseUrl}}/api/v1/cards/search?string=<string>&class=<array>&part=<array>&energyCost=<array>&tags=<array>",
+                            "raw": "{{baseUrl}}/api/v1/cards/search",
                             "host": [
                                 "{{baseUrl}}"
                             ],
@@ -195,33 +194,6 @@
                                 "v1",
                                 "cards",
                                 "search"
-                            ],
-                            "query": [
-                                {
-                                    "description": "Searched string (`name` and `description` fields)",
-                                    "key": "string",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "description": "Searched classes",
-                                    "key": "class",
-                                    "value": "<array>"
-                                },
-                                {
-                                    "description": "Searched part",
-                                    "key": "part",
-                                    "value": "<array>"
-                                },
-                                {
-                                    "description": "Search energy cost",
-                                    "key": "energyCost",
-                                    "value": "<array>"
-                                },
-                                {
-                                    "description": "Searched tags",
-                                    "key": "tags",
-                                    "value": "<array>"
-                                }
                             ]
                         },
                         "description": "Search for specific cards"
@@ -232,9 +204,25 @@
                             "name": "Search results",
                             "originalRequest": {
                                 "method": "GET",
-                                "header": [],
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"string\": \"\",\n  \"class\": \"\",\n  \"part\": \"\",\n  \"energyCost\": \"\",\n  \"tags\": \"\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
                                 "url": {
-                                    "raw": "{{baseUrl}}/api/v1/cards/search?string=<string>&class=<array>&part=<array>&energyCost=<array>&tags=<array>",
+                                    "raw": "{{baseUrl}}/api/v1/cards/search",
                                     "host": [
                                         "{{baseUrl}}"
                                     ],
@@ -243,28 +231,6 @@
                                         "v1",
                                         "cards",
                                         "search"
-                                    ],
-                                    "query": [
-                                        {
-                                            "key": "string",
-                                            "value": "<string>"
-                                        },
-                                        {
-                                            "key": "class",
-                                            "value": "<array>"
-                                        },
-                                        {
-                                            "key": "part",
-                                            "value": "<array>"
-                                        },
-                                        {
-                                            "key": "energyCost",
-                                            "value": "<array>"
-                                        },
-                                        {
-                                            "key": "tags",
-                                            "value": "<array>"
-                                        }
                                     ]
                                 }
                             },
@@ -287,9 +253,31 @@
             "id": "ab5d818d-8268-4467-abd6-2d5fbbffab8f"
         }
     ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "id": "bf054b1e-f329-4dcc-8369-3646a1301829",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "id": "99ab4bb5-e764-4377-822c-db04e82bcd31",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
     "variable": [
         {
-            "id": "4a173350-9006-45d8-8445-4fb5a4922599",
+            "id": "0c0371dc-6cc0-492e-a41a-4c12a6231fb5",
             "key": "baseUrl",
             "value": "http://localhost:3000",
             "type": "string"

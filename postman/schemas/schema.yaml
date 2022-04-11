@@ -45,9 +45,34 @@ paths:
           description: Card not found
       description: Retrieve a card by ID
   /api/v1/cards/search:
-    get:
+    post:
       summary: Search for Cards
       tags: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                string:
+                  type: string
+                part: 
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/EnumPart'
+                class:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/EnumClass'
+                energyCost:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/EnumEnergyCost'
+                tags: 
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/EnumTag'
+
       responses:
         '200':
           description: Search results
@@ -59,70 +84,50 @@ paths:
                   $ref: '#/components/schemas/Card'
               examples: {}
       operationId: get-api-v1-cards-search
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: string
-          description: Searched string (`name` and `description` fields)
-        - schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - aquatic
-                - beast
-                - bird
-                - bug
-                - plant
-                - reptile
-          in: query
-          name: class
-          description: Searched classes
-        - schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - eyes
-                - ears
-                - back
-                - horn
-                - mouth
-                - tail
-          in: query
-          name: part
-          description: Searched part
-        - schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - 0
-                - 1
-                - 2
-                - 3
-          in: query
-          name: energyCost
-          description: Search energy cost
-        - schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - attack
-                - skill
-                - power
-                - secret
-                - retain
-                - innate
-                - banish
-          in: query
-          name: tags
-          description: Searched tags
       description: Search for specific cards
 components:
   schemas:
+    EnumClass:
+      type: string
+      enum: 
+        - aquatic
+        - beast
+        - bird
+        - bug
+        - plant
+        - reptile
+    EnumPart:
+      type: string
+      enum:
+        - eyes
+        - ears
+        - back
+        - horn
+        - mouth
+        - tail
+    EnumEffect:
+      type: string
+      enum:
+        - attack
+        - heal
+        - shield
+    EnumEnergyCost:
+      type: number
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+    EnumTag:
+      type: string
+      enum:
+        - attack
+        - skill
+        - power
+        - secret
+        - retain
+        - innate
+        - banish
     Card:
       title: Card
       type: object
@@ -131,39 +136,16 @@ components:
         id:
           type: integer
         class:
-          type: string
-          enum:
-            - aquatic
-            - beast
-            - bird
-            - bug
-            - plant
-            - reptile
+          $ref: '#/components/schemas/EnumClass'
         part:
-          type: string
-          enum:
-            - eyes
-            - ears
-            - back
-            - horn
-            - mouth
-            - tail
+          $ref: '#/components/schemas/EnumPart'
         energyCost:
-          type: integer
-          enum:
-            - 0
-            - 1
-            - 2
-            - 3
+          $ref: '#/components/schemas/EnumEnergyCost'
         value:
           type: integer
           example: 0
         effect:
-          type: string
-          enum:
-            - attack
-            - heal
-            - shield
+          $ref: '#/components/schemas/EnumEffect'
         name:
           type: string
         description:
@@ -171,18 +153,15 @@ components:
         abilities:
           type: array
           items:
-            type: string
-            enum:
-              - attack
-              - retain
-              - banish
-              - skill
-              - secret
-              - power
+            $ref: '#/components/schemas/EnumTag'
+        illustrationUrl:
+          type: string
       required:
         - id
         - class
         - part
         - energyCost
         - name
+        - description
+        - illustrationUrl
   securitySchemes: {}
