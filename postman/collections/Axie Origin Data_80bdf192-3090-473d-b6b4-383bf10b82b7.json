@@ -63,7 +63,7 @@
                             ],
                             "cookie": [],
                             "responseTime": null,
-                            "body": "{\n  \"id\": 142,\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Smith\",\n  \"email\": \"alice.smith@gmail.com\",\n  \"dateOfBirth\": \"1997-10-31\",\n  \"emailVerified\": true,\n  \"signUpDate\": \"2019-08-24\"\n}"
+                            "body": "[\n {\n  \"id\": 6731776,\n  \"class\": \"beast\",\n  \"part\": \"tail\",\n  \"energyCost\": 0,\n  \"name\": \"in aliqua officia\",\n  \"value\": 0,\n  \"effect\": \"shield\",\n  \"description\": \"occaecat dolore deserunt\",\n  \"abilities\": [\n   \"retain\",\n   \"power\",\n   \"retain\",\n   \"skill\",\n   \"secret\"\n  ]\n },\n {\n  \"id\": 77436587,\n  \"class\": \"plant\",\n  \"part\": \"mouth\",\n  \"energyCost\": 0,\n  \"name\": \"veniam sit officia culpa\",\n  \"value\": 0,\n  \"effect\": \"attack\",\n  \"description\": \"in consectetur enim\",\n  \"abilities\": [\n   \"banish\",\n   \"retain\",\n   \"skill\",\n   \"skill\"\n  ]\n },\n {\n  \"id\": -14857654,\n  \"class\": \"plant\",\n  \"part\": \"ears\",\n  \"energyCost\": 0,\n  \"name\": \"culpa in amet \",\n  \"value\": 0,\n  \"effect\": \"attack\",\n  \"description\": \"ul\",\n  \"abilities\": [\n   \"secret\"\n  ]\n }\n]"
                         }
                     ]
                 },
@@ -198,29 +198,29 @@
                             ],
                             "query": [
                                 {
+                                    "description": "Searched string (`name` and `description` fields)",
                                     "key": "string",
-                                    "value": "<string>",
-                                    "description": "Searched string (`name` and `description` fields)"
+                                    "value": "<string>"
                                 },
                                 {
+                                    "description": "Searched classes",
                                     "key": "class",
-                                    "value": "<array>",
-                                    "description": "Searched classes"
+                                    "value": "<array>"
                                 },
                                 {
+                                    "description": "Searched part",
                                     "key": "part",
-                                    "value": "<array>",
-                                    "description": "Searched part"
+                                    "value": "<array>"
                                 },
                                 {
+                                    "description": "Search energy cost",
                                     "key": "energyCost",
-                                    "value": "<array>",
-                                    "description": "Search energy cost"
+                                    "value": "<array>"
                                 },
                                 {
+                                    "description": "Searched tags",
                                     "key": "tags",
-                                    "value": "<array>",
-                                    "description": "Searched tags"
+                                    "value": "<array>"
                                 }
                             ]
                         },
