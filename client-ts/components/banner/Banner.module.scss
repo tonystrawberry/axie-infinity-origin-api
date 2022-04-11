@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  background-image: url("/banner.webp");
+  width: 500px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+
+.bannerContent {
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    margin: 50px 0;
+    color: #ffc170;
+    text-transform: uppercase;
+    text-shadow: inherit;
+  }
+}
