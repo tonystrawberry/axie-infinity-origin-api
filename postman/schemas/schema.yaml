@@ -28,16 +28,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Card'
-              examples:
-                Get User Alice Smith:
-                  value:
-                    id: 142
-                    firstName: Alice
-                    lastName: Smith
-                    email: alice.smith@gmail.com
-                    dateOfBirth: '1997-10-31'
-                    emailVerified: true
-                    signUpDate: '2019-08-24'
       operationId: get-api-v1-cards
       description: 'Retrieve all the Axie Infinity: Origin cards'
   '/api/v1/cards/:id':
