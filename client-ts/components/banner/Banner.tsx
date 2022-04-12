@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Banner.module.scss";
 
-function Banner(props) {
+function Banner(props: { title: string }) {
   return (
     <div className={classes.container}>
       <div className={classes.banner}>
