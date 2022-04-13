@@ -179,17 +179,18 @@
       }
 
       .cardTags {
+        display: flex;
+        flex-direction: row;
+        -webkit-box-align: center;
+        align-items: center;
+        gap: 4px;
+        z-index: 5;
+        position: absolute;
+        bottom: 30%;
+        left: 31%;
+        transform: none;
         img {
-          display: flex;
-          flex-direction: row;
-          -webkit-box-align: center;
-          align-items: center;
-          gap: 4px;
-          z-index: 5;
-          position: absolute;
-          bottom: 30%;
-          left: 31%;
-          transform: none;
+          height: 23.4716px;
         }
       }
 
