@@ -9,7 +9,6 @@ export default function Cards() {
   const [cards, setCards] = useState<CardType[]>([]);
 
   useEffect(() => {
-    console.log("Calling...");
     const getApiV1Cards = async () => {
       const response = await cardsApi.getApiV1Cards();
       setCards(response.data);
@@ -23,9 +22,11 @@ export default function Cards() {
       <Banner title="Cards" />
       <div>
         <CardContainer>
-          {cards.map((card) => (
-            <Card card={card}></Card>
-          ))}
+          <>
+            {cards.map((card: CardType) => (
+              <Card key={card.id} card={card}></Card>
+            ))}
+          </>
         </CardContainer>
       </div>
     </div>
