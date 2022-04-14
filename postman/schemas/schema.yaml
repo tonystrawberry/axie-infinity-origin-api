@@ -113,7 +113,7 @@ components:
     EnumEffect:
       type: string
       enum:
-        - attack
+        - damage
         - heal
         - shield
     EnumEnergyCost:
