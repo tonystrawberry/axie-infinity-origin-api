@@ -186,6 +186,9 @@ components:
         - plant
         - reptile
         - neutral
+        - mech
+        - dusk
+        - neutral
     EnumPart:
       type: string
       enum:
