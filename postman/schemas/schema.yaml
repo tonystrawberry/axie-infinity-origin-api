@@ -101,6 +101,7 @@ components:
         - bug
         - plant
         - reptile
+        - neutral
     EnumPart:
       type: string
       enum:
@@ -133,6 +134,14 @@ components:
         - retain
         - innate
         - banish
+        - unplayable
+        - ethereal
+    EnumCategory:
+      type: string
+      enum:
+        - buff
+        - debuff
+        - neutral
     Card:
       title: Card
       type: object
@@ -159,8 +168,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EnumTag'
-        illustrationUrl:
-          type: string
       required:
         - id
         - class
@@ -168,5 +175,112 @@ components:
         - energyCost
         - name
         - description
-        - illustrationUrl
+        - abilities
+    Charm:
+      title: Charm
+      type: object
+      description: 'Axie Infinity: Origin - Charm'
+      properties:
+        id:
+          type: integer
+        class:
+          $ref: '#/components/schemas/EnumClass'
+        value:
+          type: integer
+          example: 0
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - id
+        - class
+        - name
+        - description
+    Curse:
+      title: Curse
+      type: object
+      description: 'Axie Infinity: Origin - Curse'
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        abilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnumTag'
+      required:
+        - id
+        - name
+        - description
+        - abilities
+    Effect:
+      title: Effect
+      type: object
+      description: 'Axie Infinity: Origin - Effect'
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        category:
+          $ref: EnumCategory
+      required:
+        - id
+        - name
+        - description
+        - category
+    Rune:
+      title: Rune
+      type: object
+      description: 'Axie Infinity: Origin - Rune'
+      properties:
+        id:
+          type: integer
+        class:
+          $ref: '#/components/schemas/EnumClass'
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - id
+        - class
+        - name
+        - description
+    Tool:
+      title: Tool
+      type: object
+      description: 'Axie Infinity: Origin - Tool'
+      properties:
+        id:
+          type: integer
+        energyCost:
+          $ref: '#/components/schemas/EnumEnergyCost'
+        value:
+          type: integer
+          example: 0
+        effect:
+          $ref: '#/components/schemas/EnumEffect'
+        name:
+          type: string
+        description:
+          type: string
+        abilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnumTag'
+      required:
+        - id
+        - energyCost
+        - value
+        - effect
+        - name
+        - description
+        - abilities
   securitySchemes: {}
