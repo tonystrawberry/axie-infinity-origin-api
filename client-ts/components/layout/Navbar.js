@@ -22,7 +22,7 @@ function Navbar() {
           <Link href="/charms">Charms</Link>
         </li>
         <li>
-          <Link href="/status-effects">Status Effects</Link>
+          <Link href="/effects">Status Effects</Link>
         </li>
       </ul>
     </header>

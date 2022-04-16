@@ -1,4 +1,9 @@
 import { CardsApi } from "@/types/typescript-axios/api";
+import { CharmsApi } from "@/types/typescript-axios/api";
+import { CursesApi } from "@/types/typescript-axios/api";
+import { EffectsApi } from "@/types/typescript-axios/api";
+import { RunesApi } from "@/types/typescript-axios/api";
+import { ToolsApi } from "@/types/typescript-axios/api";
 
 import { Configuration } from "@/types/typescript-axios/configuration";
 
@@ -11,5 +16,10 @@ const config = new Configuration({
 });
 
 const cardsApi = new CardsApi(config, "");
+const charmsApi = new CharmsApi(config, "");
+const cursesApi = new CursesApi(config, "");
+const effectsApi = new EffectsApi(config, "");
+const runesApi = new RunesApi(config, "");
+const toolsApi = new ToolsApi(config, "");
 
-export { cardsApi };
+export { cardsApi, charmsApi, cursesApi, effectsApi, runesApi, toolsApi };

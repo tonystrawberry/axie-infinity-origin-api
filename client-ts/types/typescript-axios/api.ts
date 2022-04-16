@@ -12,34 +12,14 @@
  * Do not edit the class manually.
  */
 
-import { Configuration } from "./configuration";
-import globalAxios, {
-  AxiosPromise,
-  AxiosInstance,
-  AxiosRequestConfig,
-} from "axios";
+
+import { Configuration } from './configuration';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import {
-  DUMMY_BASE_URL,
-  assertParamExists,
-  setApiKeyToObject,
-  setBasicAuthToObject,
-  setBearerAuthToObject,
-  setOAuthToObject,
-  setSearchParams,
-  serializeDataIfNeeded,
-  toPathString,
-  createRequestFunction,
-} from "./common";
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
 // @ts-ignore
-import {
-  BASE_PATH,
-  COLLECTION_FORMATS,
-  RequestArgs,
-  BaseAPI,
-  RequiredError,
-} from "./base";
+import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
  * Axie Infinity: Origin - Card
@@ -47,449 +27,565 @@ import {
  * @interface Card
  */
 export interface Card {
-  /**
-   *
-   * @type {number}
-   * @memberof Card
-   */
-  id: number;
-  /**
-   *
-   * @type {EnumClass}
-   * @memberof Card
-   */
-  class: EnumClass;
-  /**
-   *
-   * @type {EnumPart}
-   * @memberof Card
-   */
-  part: EnumPart;
-  /**
-   *
-   * @type {EnumEnergyCost}
-   * @memberof Card
-   */
-  energyCost: EnumEnergyCost;
-  /**
-   *
-   * @type {number}
-   * @memberof Card
-   */
-  value?: number;
-  /**
-   *
-   * @type {EnumEffect}
-   * @memberof Card
-   */
-  effect?: EnumEffect;
-  /**
-   *
-   * @type {string}
-   * @memberof Card
-   */
-  name: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Card
-   */
-  description: string;
-  /**
-   *
-   * @type {Array<EnumTag>}
-   * @memberof Card
-   */
-  abilities?: Array<EnumTag>;
-  /**
-   *
-   * @type {string}
-   * @memberof Card
-   */
-  illustrationUrl: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Card
+     */
+    'id': string;
+    /**
+     * 
+     * @type {EnumClass}
+     * @memberof Card
+     */
+    'class': EnumClass;
+    /**
+     * 
+     * @type {EnumPart}
+     * @memberof Card
+     */
+    'part': EnumPart;
+    /**
+     * 
+     * @type {EnumEnergyCost}
+     * @memberof Card
+     */
+    'energyCost': EnumEnergyCost;
+    /**
+     * 
+     * @type {number}
+     * @memberof Card
+     */
+    'value'?: number;
+    /**
+     * 
+     * @type {EnumEffect}
+     * @memberof Card
+     */
+    'effect'?: EnumEffect;
+    /**
+     * 
+     * @type {string}
+     * @memberof Card
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Card
+     */
+    'description': string;
+    /**
+     * 
+     * @type {Array<EnumTag>}
+     * @memberof Card
+     */
+    'abilities': Array<EnumTag>;
 }
 /**
- *
+ * Axie Infinity: Origin - Charm
+ * @export
+ * @interface Charm
+ */
+export interface Charm {
+    /**
+     * 
+     * @type {string}
+     * @memberof Charm
+     */
+    'id': string;
+    /**
+     * 
+     * @type {EnumClass}
+     * @memberof Charm
+     */
+    'class': EnumClass;
+    /**
+     * 
+     * @type {number}
+     * @memberof Charm
+     */
+    'value'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Charm
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Charm
+     */
+    'description': string;
+}
+/**
+ * Axie Infinity: Origin - Curse
+ * @export
+ * @interface Curse
+ */
+export interface Curse {
+    /**
+     * 
+     * @type {string}
+     * @memberof Curse
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Curse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Curse
+     */
+    'description': string;
+    /**
+     * 
+     * @type {Array<EnumTag>}
+     * @memberof Curse
+     */
+    'abilities': Array<EnumTag>;
+}
+/**
+ * Axie Infinity: Origin - Effect
+ * @export
+ * @interface Effect
+ */
+export interface Effect {
+    /**
+     * 
+     * @type {string}
+     * @memberof Effect
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Effect
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Effect
+     */
+    'description': string;
+    /**
+     * 
+     * @type {EnumCategory}
+     * @memberof Effect
+     */
+    'category': EnumCategory;
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const EnumCategory = {
+    Buff: 'buff',
+    Debuff: 'debuff',
+    Neutral: 'neutral'
+} as const;
+
+export type EnumCategory = typeof EnumCategory[keyof typeof EnumCategory];
+
+
+/**
+ * 
  * @export
  * @enum {string}
  */
 
 export const EnumClass = {
-  Aquatic: "aquatic",
-  Beast: "beast",
-  Bird: "bird",
-  Bug: "bug",
-  Plant: "plant",
-  Reptile: "reptile",
+    Aquatic: 'aquatic',
+    Beast: 'beast',
+    Bird: 'bird',
+    Bug: 'bug',
+    Plant: 'plant',
+    Reptile: 'reptile',
+    Neutral: 'neutral',
+    Mech: 'mech',
+    Dusk: 'dusk',
+    Neutral: 'neutral'
 } as const;
 
 export type EnumClass = typeof EnumClass[keyof typeof EnumClass];
 
+
 /**
- *
+ * 
  * @export
  * @enum {string}
  */
 
 export const EnumEffect = {
-  Attack: "attack",
-  Heal: "heal",
-  Shield: "shield",
+    Damage: 'damage',
+    Heal: 'heal',
+    Shield: 'shield'
 } as const;
 
 export type EnumEffect = typeof EnumEffect[keyof typeof EnumEffect];
 
+
 /**
- *
+ * 
  * @export
  * @enum {string}
  */
 
 export const EnumEnergyCost = {
-  NUMBER_0: 0,
-  NUMBER_1: 1,
-  NUMBER_2: 2,
-  NUMBER_3: 3,
+    NUMBER_0: 0,
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3
 } as const;
 
 export type EnumEnergyCost = typeof EnumEnergyCost[keyof typeof EnumEnergyCost];
 
+
 /**
- *
+ * 
  * @export
  * @enum {string}
  */
 
 export const EnumPart = {
-  Eyes: "eyes",
-  Ears: "ears",
-  Back: "back",
-  Horn: "horn",
-  Mouth: "mouth",
-  Tail: "tail",
+    Eyes: 'eyes',
+    Ears: 'ears',
+    Back: 'back',
+    Horn: 'horn',
+    Mouth: 'mouth',
+    Tail: 'tail'
 } as const;
 
 export type EnumPart = typeof EnumPart[keyof typeof EnumPart];
 
+
 /**
- *
+ * 
  * @export
  * @enum {string}
  */
 
 export const EnumTag = {
-  Attack: "attack",
-  Skill: "skill",
-  Power: "power",
-  Secret: "secret",
-  Retain: "retain",
-  Innate: "innate",
-  Banish: "banish",
+    Attack: 'attack',
+    Skill: 'skill',
+    Power: 'power',
+    Secret: 'secret',
+    Retain: 'retain',
+    Innate: 'innate',
+    Banish: 'banish',
+    Unplayable: 'unplayable',
+    Ethereal: 'ethereal'
 } as const;
 
 export type EnumTag = typeof EnumTag[keyof typeof EnumTag];
 
+
 /**
- *
+ * 
  * @export
  * @interface InlineObject
  */
 export interface InlineObject {
-  /**
-   *
-   * @type {string}
-   * @memberof InlineObject
-   */
-  string?: string;
-  /**
-   *
-   * @type {Array<EnumPart>}
-   * @memberof InlineObject
-   */
-  part?: Array<EnumPart>;
-  /**
-   *
-   * @type {Array<EnumClass>}
-   * @memberof InlineObject
-   */
-  class?: Array<EnumClass>;
-  /**
-   *
-   * @type {Array<EnumEnergyCost>}
-   * @memberof InlineObject
-   */
-  energyCost?: Array<EnumEnergyCost>;
-  /**
-   *
-   * @type {Array<EnumTag>}
-   * @memberof InlineObject
-   */
-  tags?: Array<EnumTag>;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineObject
+     */
+    'string'?: string;
+    /**
+     * 
+     * @type {Array<EnumPart>}
+     * @memberof InlineObject
+     */
+    'part'?: Array<EnumPart>;
+    /**
+     * 
+     * @type {Array<EnumClass>}
+     * @memberof InlineObject
+     */
+    'class'?: Array<EnumClass>;
+    /**
+     * 
+     * @type {Array<EnumEnergyCost>}
+     * @memberof InlineObject
+     */
+    'energyCost'?: Array<EnumEnergyCost>;
+    /**
+     * 
+     * @type {Array<EnumTag>}
+     * @memberof InlineObject
+     */
+    'tags'?: Array<EnumTag>;
+}
+/**
+ * Axie Infinity: Origin - Rune
+ * @export
+ * @interface Rune
+ */
+export interface Rune {
+    /**
+     * 
+     * @type {string}
+     * @memberof Rune
+     */
+    'id': string;
+    /**
+     * 
+     * @type {EnumClass}
+     * @memberof Rune
+     */
+    'class': EnumClass;
+    /**
+     * 
+     * @type {string}
+     * @memberof Rune
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Rune
+     */
+    'description': string;
+}
+/**
+ * Axie Infinity: Origin - Tool
+ * @export
+ * @interface Tool
+ */
+export interface Tool {
+    /**
+     * 
+     * @type {string}
+     * @memberof Tool
+     */
+    'id': string;
+    /**
+     * 
+     * @type {EnumEnergyCost}
+     * @memberof Tool
+     */
+    'energyCost': EnumEnergyCost;
+    /**
+     * 
+     * @type {number}
+     * @memberof Tool
+     */
+    'value': number;
+    /**
+     * 
+     * @type {EnumEffect}
+     * @memberof Tool
+     */
+    'effect': EnumEffect;
+    /**
+     * 
+     * @type {string}
+     * @memberof Tool
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Tool
+     */
+    'description': string;
+    /**
+     * 
+     * @type {Array<EnumTag>}
+     * @memberof Tool
+     */
+    'abilities': Array<EnumTag>;
 }
 
 /**
  * CardsApi - axios parameter creator
  * @export
  */
-export const CardsApiAxiosParamCreator = function (
-  configuration?: Configuration
-) {
-  return {
-    /**
-     * Retrieve all the Axie Infinity: Origin cards
-     * @summary Get All Cards
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getApiV1Cards: async (
-      options: AxiosRequestConfig = {}
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/api/v1/cards`;
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-      let baseOptions;
-      if (configuration) {
-        baseOptions = configuration.baseOptions;
-      }
+export const CardsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin cards
+         * @summary Get All Cards
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Cards: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/cards`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
 
-      const localVarRequestOptions = {
-        method: "GET",
-        ...baseOptions,
-        ...options,
-      };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter);
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {};
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      };
 
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Retrieve a card by ID
-     * @summary Get Card by ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getApiV1CardsId: async (
-      options: AxiosRequestConfig = {}
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/api/v1/cards/:id`;
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-      let baseOptions;
-      if (configuration) {
-        baseOptions = configuration.baseOptions;
-      }
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
-      const localVarRequestOptions = {
-        method: "GET",
-        ...baseOptions,
-        ...options,
-      };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieve a card by ID
+         * @summary Get Card by ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1CardsId: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/cards/:id`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter);
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {};
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      };
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Search for specific cards
-     * @summary Search for Cards
-     * @param {InlineObject} [inlineObject]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getApiV1CardsSearch: async (
-      inlineObject?: InlineObject,
-      options: AxiosRequestConfig = {}
-    ): Promise<RequestArgs> => {
-      const localVarPath = `/api/v1/cards/search`;
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-      let baseOptions;
-      if (configuration) {
-        baseOptions = configuration.baseOptions;
-      }
 
-      const localVarRequestOptions = {
-        method: "POST",
-        ...baseOptions,
-        ...options,
-      };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
-      localVarHeaderParameter["Content-Type"] = "application/json";
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Search for specific cards
+         * @summary Search for Cards
+         * @param {InlineObject} [inlineObject] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1CardsSearch: async (inlineObject?: InlineObject, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/cards/search`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter);
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {};
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      };
-      localVarRequestOptions.data = serializeDataIfNeeded(
-        inlineObject,
-        localVarRequestOptions,
-        configuration
-      );
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-  };
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
 };
 
 /**
  * CardsApi - functional programming interface
  * @export
  */
-export const CardsApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = CardsApiAxiosParamCreator(configuration);
-  return {
-    /**
-     * Retrieve all the Axie Infinity: Origin cards
-     * @summary Get All Cards
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getApiV1Cards(
-      options?: AxiosRequestConfig
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Card>>
-    > {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1Cards(
-        options
-      );
-      return createRequestFunction(
-        localVarAxiosArgs,
-        globalAxios,
-        BASE_PATH,
-        configuration
-      );
-    },
-    /**
-     * Retrieve a card by ID
-     * @summary Get Card by ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getApiV1CardsId(
-      options?: AxiosRequestConfig
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Card>
-    > {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1CardsId(
-        options
-      );
-      return createRequestFunction(
-        localVarAxiosArgs,
-        globalAxios,
-        BASE_PATH,
-        configuration
-      );
-    },
-    /**
-     * Search for specific cards
-     * @summary Search for Cards
-     * @param {InlineObject} [inlineObject]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getApiV1CardsSearch(
-      inlineObject?: InlineObject,
-      options?: AxiosRequestConfig
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Card>>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.getApiV1CardsSearch(
-          inlineObject,
-          options
-        );
-      return createRequestFunction(
-        localVarAxiosArgs,
-        globalAxios,
-        BASE_PATH,
-        configuration
-      );
-    },
-  };
+export const CardsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = CardsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin cards
+         * @summary Get All Cards
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getApiV1Cards(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Card>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1Cards(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieve a card by ID
+         * @summary Get Card by ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getApiV1CardsId(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Card>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1CardsId(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Search for specific cards
+         * @summary Search for Cards
+         * @param {InlineObject} [inlineObject] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getApiV1CardsSearch(inlineObject?: InlineObject, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Card>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1CardsSearch(inlineObject, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
 };
 
 /**
  * CardsApi - factory interface
  * @export
  */
-export const CardsApiFactory = function (
-  configuration?: Configuration,
-  basePath?: string,
-  axios?: AxiosInstance
-) {
-  const localVarFp = CardsApiFp(configuration);
-  return {
-    /**
-     * Retrieve all the Axie Infinity: Origin cards
-     * @summary Get All Cards
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getApiV1Cards(options?: any): AxiosPromise<Array<Card>> {
-      return localVarFp
-        .getApiV1Cards(options)
-        .then((request) => request(axios, basePath));
-    },
-    /**
-     * Retrieve a card by ID
-     * @summary Get Card by ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getApiV1CardsId(options?: any): AxiosPromise<Card> {
-      return localVarFp
-        .getApiV1CardsId(options)
-        .then((request) => request(axios, basePath));
-    },
-    /**
-     * Search for specific cards
-     * @summary Search for Cards
-     * @param {InlineObject} [inlineObject]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getApiV1CardsSearch(
-      inlineObject?: InlineObject,
-      options?: any
-    ): AxiosPromise<Array<Card>> {
-      return localVarFp
-        .getApiV1CardsSearch(inlineObject, options)
-        .then((request) => request(axios, basePath));
-    },
-  };
+export const CardsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = CardsApiFp(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin cards
+         * @summary Get All Cards
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Cards(options?: any): AxiosPromise<Array<Card>> {
+            return localVarFp.getApiV1Cards(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve a card by ID
+         * @summary Get Card by ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1CardsId(options?: any): AxiosPromise<Card> {
+            return localVarFp.getApiV1CardsId(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Search for specific cards
+         * @summary Search for Cards
+         * @param {InlineObject} [inlineObject] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1CardsSearch(inlineObject?: InlineObject, options?: any): AxiosPromise<Array<Card>> {
+            return localVarFp.getApiV1CardsSearch(inlineObject, options).then((request) => request(axios, basePath));
+        },
+    };
 };
 
 /**
@@ -499,46 +595,529 @@ export const CardsApiFactory = function (
  * @extends {BaseAPI}
  */
 export class CardsApi extends BaseAPI {
-  /**
-   * Retrieve all the Axie Infinity: Origin cards
-   * @summary Get All Cards
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CardsApi
-   */
-  public getApiV1Cards(options?: AxiosRequestConfig) {
-    return CardsApiFp(this.configuration)
-      .getApiV1Cards(options)
-      .then((request) => request(this.axios, this.basePath));
-  }
+    /**
+     * Retrieve all the Axie Infinity: Origin cards
+     * @summary Get All Cards
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardsApi
+     */
+    public getApiV1Cards(options?: AxiosRequestConfig) {
+        return CardsApiFp(this.configuration).getApiV1Cards(options).then((request) => request(this.axios, this.basePath));
+    }
 
-  /**
-   * Retrieve a card by ID
-   * @summary Get Card by ID
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CardsApi
-   */
-  public getApiV1CardsId(options?: AxiosRequestConfig) {
-    return CardsApiFp(this.configuration)
-      .getApiV1CardsId(options)
-      .then((request) => request(this.axios, this.basePath));
-  }
+    /**
+     * Retrieve a card by ID
+     * @summary Get Card by ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardsApi
+     */
+    public getApiV1CardsId(options?: AxiosRequestConfig) {
+        return CardsApiFp(this.configuration).getApiV1CardsId(options).then((request) => request(this.axios, this.basePath));
+    }
 
-  /**
-   * Search for specific cards
-   * @summary Search for Cards
-   * @param {InlineObject} [inlineObject]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof CardsApi
-   */
-  public getApiV1CardsSearch(
-    inlineObject?: InlineObject,
-    options?: AxiosRequestConfig
-  ) {
-    return CardsApiFp(this.configuration)
-      .getApiV1CardsSearch(inlineObject, options)
-      .then((request) => request(this.axios, this.basePath));
-  }
+    /**
+     * Search for specific cards
+     * @summary Search for Cards
+     * @param {InlineObject} [inlineObject] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CardsApi
+     */
+    public getApiV1CardsSearch(inlineObject?: InlineObject, options?: AxiosRequestConfig) {
+        return CardsApiFp(this.configuration).getApiV1CardsSearch(inlineObject, options).then((request) => request(this.axios, this.basePath));
+    }
 }
+
+
+/**
+ * CharmsApi - axios parameter creator
+ * @export
+ */
+export const CharmsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin charms
+         * @summary Get All Charms
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Charms: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/charms`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * CharmsApi - functional programming interface
+ * @export
+ */
+export const CharmsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = CharmsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin charms
+         * @summary Get All Charms
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getApiV1Charms(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Charm>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1Charms(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * CharmsApi - factory interface
+ * @export
+ */
+export const CharmsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = CharmsApiFp(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin charms
+         * @summary Get All Charms
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Charms(options?: any): AxiosPromise<Array<Charm>> {
+            return localVarFp.getApiV1Charms(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * CharmsApi - object-oriented interface
+ * @export
+ * @class CharmsApi
+ * @extends {BaseAPI}
+ */
+export class CharmsApi extends BaseAPI {
+    /**
+     * Retrieve all the Axie Infinity: Origin charms
+     * @summary Get All Charms
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CharmsApi
+     */
+    public getApiV1Charms(options?: AxiosRequestConfig) {
+        return CharmsApiFp(this.configuration).getApiV1Charms(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * CursesApi - axios parameter creator
+ * @export
+ */
+export const CursesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin curses
+         * @summary Get All Curses
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Curses: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/curses`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * CursesApi - functional programming interface
+ * @export
+ */
+export const CursesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = CursesApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin curses
+         * @summary Get All Curses
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getApiV1Curses(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Curse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1Curses(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * CursesApi - factory interface
+ * @export
+ */
+export const CursesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = CursesApiFp(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin curses
+         * @summary Get All Curses
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Curses(options?: any): AxiosPromise<Array<Curse>> {
+            return localVarFp.getApiV1Curses(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * CursesApi - object-oriented interface
+ * @export
+ * @class CursesApi
+ * @extends {BaseAPI}
+ */
+export class CursesApi extends BaseAPI {
+    /**
+     * Retrieve all the Axie Infinity: Origin curses
+     * @summary Get All Curses
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CursesApi
+     */
+    public getApiV1Curses(options?: AxiosRequestConfig) {
+        return CursesApiFp(this.configuration).getApiV1Curses(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * EffectsApi - axios parameter creator
+ * @export
+ */
+export const EffectsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin effects
+         * @summary Get All Effects
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Effects: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/effects`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * EffectsApi - functional programming interface
+ * @export
+ */
+export const EffectsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = EffectsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin effects
+         * @summary Get All Effects
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getApiV1Effects(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Effect>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1Effects(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * EffectsApi - factory interface
+ * @export
+ */
+export const EffectsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = EffectsApiFp(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin effects
+         * @summary Get All Effects
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Effects(options?: any): AxiosPromise<Array<Effect>> {
+            return localVarFp.getApiV1Effects(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * EffectsApi - object-oriented interface
+ * @export
+ * @class EffectsApi
+ * @extends {BaseAPI}
+ */
+export class EffectsApi extends BaseAPI {
+    /**
+     * Retrieve all the Axie Infinity: Origin effects
+     * @summary Get All Effects
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EffectsApi
+     */
+    public getApiV1Effects(options?: AxiosRequestConfig) {
+        return EffectsApiFp(this.configuration).getApiV1Effects(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * RunesApi - axios parameter creator
+ * @export
+ */
+export const RunesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin runes
+         * @summary Get All Runes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Runes: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/runes`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * RunesApi - functional programming interface
+ * @export
+ */
+export const RunesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = RunesApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin runes
+         * @summary Get All Runes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getApiV1Runes(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Rune>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1Runes(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * RunesApi - factory interface
+ * @export
+ */
+export const RunesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = RunesApiFp(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin runes
+         * @summary Get All Runes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Runes(options?: any): AxiosPromise<Array<Rune>> {
+            return localVarFp.getApiV1Runes(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * RunesApi - object-oriented interface
+ * @export
+ * @class RunesApi
+ * @extends {BaseAPI}
+ */
+export class RunesApi extends BaseAPI {
+    /**
+     * Retrieve all the Axie Infinity: Origin runes
+     * @summary Get All Runes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RunesApi
+     */
+    public getApiV1Runes(options?: AxiosRequestConfig) {
+        return RunesApiFp(this.configuration).getApiV1Runes(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * ToolsApi - axios parameter creator
+ * @export
+ */
+export const ToolsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin tools
+         * @summary Get All Tools
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Tools: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/tools`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ToolsApi - functional programming interface
+ * @export
+ */
+export const ToolsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ToolsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin tools
+         * @summary Get All Tools
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getApiV1Tools(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Tool>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApiV1Tools(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * ToolsApi - factory interface
+ * @export
+ */
+export const ToolsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ToolsApiFp(configuration)
+    return {
+        /**
+         * Retrieve all the Axie Infinity: Origin tools
+         * @summary Get All Tools
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getApiV1Tools(options?: any): AxiosPromise<Array<Tool>> {
+            return localVarFp.getApiV1Tools(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * ToolsApi - object-oriented interface
+ * @export
+ * @class ToolsApi
+ * @extends {BaseAPI}
+ */
+export class ToolsApi extends BaseAPI {
+    /**
+     * Retrieve all the Axie Infinity: Origin tools
+     * @summary Get All Tools
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ToolsApi
+     */
+    public getApiV1Tools(options?: AxiosRequestConfig) {
+        return ToolsApiFp(this.configuration).getApiV1Tools(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
