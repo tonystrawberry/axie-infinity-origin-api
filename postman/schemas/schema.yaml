@@ -232,7 +232,7 @@ components:
       description: 'Axie Infinity: Origin - Card'
       properties:
         id:
-          type: integer
+          type: string
         class:
           $ref: '#/components/schemas/EnumClass'
         part:
@@ -266,7 +266,7 @@ components:
       description: 'Axie Infinity: Origin - Charm'
       properties:
         id:
-          type: integer
+          type: string
         class:
           $ref: '#/components/schemas/EnumClass'
         value:
@@ -287,7 +287,7 @@ components:
       description: 'Axie Infinity: Origin - Curse'
       properties:
         id:
-          type: integer
+          type: string
         name:
           type: string
         description:
@@ -307,7 +307,7 @@ components:
       description: 'Axie Infinity: Origin - Effect'
       properties:
         id:
-          type: integer
+          type: string
         name:
           type: string
         description:
@@ -325,7 +325,7 @@ components:
       description: 'Axie Infinity: Origin - Rune'
       properties:
         id:
-          type: integer
+          type: string
         class:
           $ref: '#/components/schemas/EnumClass'
         name:
@@ -343,7 +343,7 @@ components:
       description: 'Axie Infinity: Origin - Tool'
       properties:
         id:
-          type: integer
+          type: string
         energyCost:
           $ref: '#/components/schemas/EnumEnergyCost'
         value:
