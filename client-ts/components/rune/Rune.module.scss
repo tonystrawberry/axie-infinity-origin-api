@@ -1,0 +1,115 @@
+.rune {
+  position: relative;
+  filter: none;
+  transition: transform 0.2s ease 0s, filter 0.1s ease 0s;
+
+  .runeSubElement {
+    width: 220px;
+    height: 301.07px;
+    position: relative;
+
+    &::before {
+      content: "";
+      background: rgba(57, 36, 26, 0.47);
+      filter: blur(5.21592px);
+      position: absolute;
+      inset: 0px;
+      border-radius: 24.2168px;
+    }
+
+    .runeBackground {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 1;
+
+      img {
+        width: 100%;
+        margin: 0px auto;
+        display: block;
+      }
+    }
+
+    .runeArt {
+      display: flex;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      position: absolute;
+      top: 10.5%;
+      height: 39.5%;
+      left: 0px;
+      right: 0px;
+      z-index: 2;
+
+      img {
+        max-width: 40%;
+        max-height: 90%;
+        margin: 0px auto;
+        display: block;
+      }
+    }
+
+    .runeFrame {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 1;
+
+      img {
+        width: 100%;
+        margin: 0px auto;
+        display: block;
+      }
+    }
+
+    .runeName {
+      text-align: center;
+      font-size: 17.5106px;
+      font-family: "Changa One", "sans serif";
+      color: rgb(255, 255, 255);
+      position: absolute;
+      max-width: 80.2%;
+      margin: 0px auto;
+      left: 0px;
+      right: 0px;
+      bottom: 44%;
+      line-height: 1.15;
+      z-index: 3;
+      text-shadow: rgb(58 49 48) 0px 0px 2px;
+    }
+
+    .runeDescription {
+      text-align: center;
+      font-size: 14.9026px;
+      font-weight: 600;
+      font-family: Roboto, "sans serif";
+      color: rgb(219, 219, 219);
+      position: absolute;
+      top: 61%;
+      max-width: 86%;
+      left: 0px;
+      right: 0px;
+      margin: 0px auto;
+      line-height: 1.2;
+      z-index: 5;
+      text-shadow: rgb(58 52 51) 0px 0px 2px;
+    }
+
+    .runeClass {
+      z-index: 3;
+      position: absolute;
+      top: 4.8%;
+      left: 6.6%;
+      width: 20.7%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
