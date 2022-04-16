@@ -162,7 +162,7 @@ paths:
     get:
       summary: Get All Tools
       tags: 
-        - runes
+        - tools
       responses:
         '200':
           description: Tool found
