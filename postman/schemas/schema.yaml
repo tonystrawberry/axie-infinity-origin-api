@@ -77,7 +77,6 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/EnumTag'
-
       responses:
         '200':
           description: Search results
@@ -90,6 +89,91 @@ paths:
               examples: {}
       operationId: get-api-v1-cards-search
       description: Search for specific cards
+  /api/v1/charms:
+    parameters: []
+    get:
+      summary: Get All Charms
+      tags: 
+        - charms
+      responses:
+        '200':
+          description: Charms found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Charm'
+      operationId: get-api-v1-charms
+      description: 'Retrieve all the Axie Infinity: Origin charms'
+  /api/v1/curses:
+    parameters: []
+    get:
+      summary: Get All Curses
+      tags: 
+        - curses
+      responses:
+        '200':
+          description: Curses found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Curse'
+      operationId: get-api-v1-curses
+      description: 'Retrieve all the Axie Infinity: Origin curses'
+  /api/v1/effects:
+    parameters: []
+    get:
+      summary: Get All Effects
+      tags: 
+        - effects
+      responses:
+        '200':
+          description: Effects found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Effect'
+      operationId: get-api-v1-effects
+      description: 'Retrieve all the Axie Infinity: Origin effects'
+  /api/v1/runes:
+    parameters: []
+    get:
+      summary: Get All Runes
+      tags: 
+        - runes
+      responses:
+        '200':
+          description: Runes found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rune'
+      operationId: get-api-v1-runes
+      description: 'Retrieve all the Axie Infinity: Origin runes'
+  /api/v1/tools:
+    parameters: []
+    get:
+      summary: Get All Tools
+      tags: 
+        - runes
+      responses:
+        '200':
+          description: Tool found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tool'
+      operationId: get-api-v1-tools
+      description: 'Retrieve all the Axie Infinity: Origin tools'
 components:
   schemas:
     EnumClass:
