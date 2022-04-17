@@ -1,0 +1,46 @@
+.effect {
+  transition: transform 0.2s ease 0s;
+  display: flex;
+  flex-direction: column;
+
+  .effectSubElement {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+    > img {
+      width: 60px;
+      object-fit: contain;
+      transition: transform 0.2s ease 0s;
+    }
+
+    .effectContent {
+      display: flex;
+      flex-direction: column;
+
+      .effectName {
+        display: flex;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+
+        h3 {
+          margin: 0px;
+          line-height: 1.3;
+          font-size: 24px;
+          font-family: "Changa One", Poppins, "sans serif";
+          font-weight: 500;
+        }
+      }
+
+      .effectDescription {
+        margin: 0px;
+        font-family: Poppins, sans-serif;
+        line-height: 1.6;
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgb(57, 36, 26);
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
 .effectContainer {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   padding: 60px 16px;
 }

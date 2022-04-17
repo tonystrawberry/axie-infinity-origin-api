@@ -1,13 +1,41 @@
 import classes from "./Navbar.module.scss";
-import Link from "next/link";
-import { withRouter } from "next/router";
 import ActiveLink from "@/components/active-link/ActiveLink";
 
 function Navbar(props) {
-  const { router } = props;
-  console.log("router", router);
   return (
     <header className={classes.header}>
+      <ul className={classes.navMobile}>
+        <li>
+          <ActiveLink href="/cards" activeClassName={classes.active}>
+            <img src="images/navbar/icons/card.png" />
+          </ActiveLink>
+        </li>
+        <li>
+          <ActiveLink href="/curses" activeClassName={classes.active}>
+            <img src="images/navbar/icons/curse.png" />
+          </ActiveLink>
+        </li>
+        <li>
+          <ActiveLink href="/tools" activeClassName={classes.active}>
+            <img src="images/navbar/icons/tool.png" />
+          </ActiveLink>
+        </li>
+        <li>
+          <ActiveLink href="/runes" activeClassName={classes.active}>
+            <img src="images/navbar/icons/rune.png" />
+          </ActiveLink>
+        </li>
+        <li>
+          <ActiveLink href="/charms" activeClassName={classes.active}>
+            <img src="images/navbar/icons/charm.png" />
+          </ActiveLink>
+        </li>
+        <li>
+          <ActiveLink href="/effects" activeClassName={classes.active}>
+            <img src="images/navbar/icons/effect.png" />
+          </ActiveLink>
+        </li>
+      </ul>
       <ul>
         <li>
           <ActiveLink href="/cards" activeClassName={classes.active}>
@@ -44,4 +72,4 @@ function Navbar(props) {
   );
 }
 
-export default withRouter(Navbar);
+export default Navbar;

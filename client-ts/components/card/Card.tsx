@@ -17,18 +17,18 @@ function Card(props: { card: Card }) {
       <div className={classes.cardSubElement}>
         <div className={classes.cardSubSubElement}>
           <div className={classes.cardBackground}>
-            <img src={backgroundImgSrc} alt="dawn Axie Card Background" />
+            <img src={backgroundImgSrc} alt="Axie Card - Background" />
           </div>
           <div className={classes.cardArt}>
-            <img src={artImgSrc} alt="Aegis Talisman" />
+            <img src={artImgSrc} alt="Axie Card - Art" />
           </div>
           <div className={classes.cardGradient}>
-            <img src={gradientImgSrc} alt="dawn Axie Card" />
+            <img src={gradientImgSrc} alt="Axie Card - Gradient" />
           </div>
           <div className={classes.cardFrame}></div>
           {card.effect && (
             <div className={classes.cardValue}>
-              <img src={effectImgSrc} alt={`${card.effect} Card`} />
+              <img src={effectImgSrc} alt={`Axie Card - Effect`} />
               <span>{card.value}</span>
             </div>
           )}
@@ -36,13 +36,13 @@ function Card(props: { card: Card }) {
             <div className={classes.cardEnergyCostFrame}>
               <img
                 src="/images/templates/card/frame/frame-energy.png"
-                alt="Card Frame"
+                alt="Axie Card - Energy Cost - Frame"
               />
             </div>
             <div className={classes.cardEnergyCostIcon}>
               <img
                 src="/images/templates/card/frame/energy-icon.png"
-                alt="Energy Icon"
+                alt="Axie Card - Energy Cost - Icon"
               />
             </div>
             <span className={classes.cardEnergyCostValue}>
@@ -53,11 +53,11 @@ function Card(props: { card: Card }) {
             <div className={classes.cardPartFrame}>
               <img
                 src="/images/templates/card/frame/frame-owner-plate.png"
-                alt="Axie Card Frame"
+                alt="Axie Card - Frame"
               />
             </div>
             <div className={classes.cardPartIcon}>
-              <img src={partImgSrc} alt={`${card.part} Body Part`} />
+              <img src={partImgSrc} alt="Axie Card - Body Part" />
             </div>
           </div>
           <span className={classes.cardName}>{card.name}</span>
@@ -69,14 +69,14 @@ function Card(props: { card: Card }) {
                   <img
                     key={`${card.id}_${ability}`}
                     src={abilityImgSrc}
-                    alt={`${ability} Card Tag`}
+                    alt="Axie Card - Ability"
                   />
                 );
               })}
           </div>
           <span className={classes.cardDescription}>{card.description}</span>
           <div className={classes.cardClass}>
-            <img src={classImgSrc} alt={`${card.class} Class Card`} />
+            <img src={classImgSrc} alt="Axie Card - Class" />
           </div>
         </div>
       </div>

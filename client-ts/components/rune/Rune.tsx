@@ -11,19 +11,19 @@ function Rune(props: { rune: Rune }) {
         <div className={classes.runeBackground}>
           <img
             src="/images/templates/rune/backgrounds/background.png"
-            alt="Rune background"
+            alt="Rune Card - Background"
           />
         </div>
         <div className={classes.runeArt}>
           <img
             src={`/images/templates/rune/arts/${rune.id}.jpg`}
-            alt="Adaptive Program"
+            alt="Rune Card - Art"
           />
         </div>
         <div className={classes.runeFrame}>
           <img
             src="/images/templates/rune/frame/frame.png"
-            alt="Rune background"
+            alt="Rune Card - Frame"
           />
         </div>
         <span className={classes.runeDescription}>{rune.description}</span>
@@ -31,7 +31,7 @@ function Rune(props: { rune: Rune }) {
         <div className={classes.runeClass}>
           <img
             src={`/images/templates/rune/class/${rune.class}.jpg`}
-            alt="mech class charm"
+            alt="Rune Card - Class"
           />
         </div>
       </div>

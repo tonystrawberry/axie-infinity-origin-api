@@ -12,16 +12,19 @@ function Tool(props: { tool: Tool }) {
           <div className={classes.toolBackground}>
             <img
               src={`/images/templates/tool/backgrounds/tool.jpg`}
-              alt="tool Axie Card Background"
+              alt="Tool Card - Background"
             />
           </div>
           <div className={classes.toolArt}>
-            <img src={`/images/templates/tool/arts/${tool.id}.jpg`} />
+            <img
+              src={`/images/templates/tool/arts/${tool.id}.jpg`}
+              alt="Tool Card - Art"
+            />
           </div>
           <div className={classes.toolGradient}>
             <img
               src="/images/templates/tool/gradients/tool.png"
-              alt="tool Axie Card"
+              alt="Tool Card - Gradient"
             />
           </div>
           <div className={classes.toolFrame}></div>
@@ -29,7 +32,7 @@ function Tool(props: { tool: Tool }) {
             <div className={classes.toolValue}>
               <img
                 src={`/images/templates/card/stats/${tool.effect}.png`}
-                alt={`${tool.effect} Card`}
+                alt="Tool Card - Value Effect"
               />
               <span>{tool.value}</span>
             </div>
@@ -38,13 +41,13 @@ function Tool(props: { tool: Tool }) {
             <div className={classes.toolEnergyCostFrame}>
               <img
                 src="/images/templates/tool/frame/frame-energy.png"
-                alt="Card frame"
+                alt="Tool Card - Energy Cost - Frame"
               />
             </div>
             <div className={classes.toolEnergyCostIcon}>
               <img
                 src="/images/templates/tool/frame/energy-icon.png"
-                alt="Energy icon"
+                alt="Tool Card - Energy Cost - Icon"
               />
             </div>
             <span className={classes.toolEnergyCostValue}>
@@ -60,7 +63,7 @@ function Tool(props: { tool: Tool }) {
                   <img
                     key={`${tool.id}_${ability}`}
                     src={abilityImgSrc}
-                    alt={`${ability} Card Tag`}
+                    alt="Tool Card - Tag"
                   />
                 );
               })}
