@@ -211,8 +211,7 @@ export const EnumClass = {
     Reptile: 'reptile',
     Neutral: 'neutral',
     Mech: 'mech',
-    Dusk: 'dusk',
-    Neutral: 'neutral'
+    Dusk: 'dusk'
 } as const;
 
 export type EnumClass = typeof EnumClass[keyof typeof EnumClass];
