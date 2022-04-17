@@ -188,7 +188,6 @@ components:
         - neutral
         - mech
         - dusk
-        - neutral
     EnumPart:
       type: string
       enum:
