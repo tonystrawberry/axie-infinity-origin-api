@@ -1,8 +1,7 @@
-import { useState, useEffect, FC } from "react";
+import React, { useState, useEffect, FC, Children } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import React, { Children } from "react";
 
 interface Props {
   children: JSX.Element;

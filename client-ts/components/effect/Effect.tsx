@@ -1,8 +1,8 @@
-import { Effect } from "@/types/typescript-axios";
+import { Effect as EffectType } from "@/types/typescript-axios";
 import React from "react";
 import classes from "./Effect.module.scss";
 
-function Effect(props: { effect: Effect }) {
+function Effect(props: { effect: EffectType }) {
   const { effect } = props;
 
   return (

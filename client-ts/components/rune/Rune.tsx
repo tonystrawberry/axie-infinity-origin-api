@@ -1,8 +1,8 @@
-import { Rune } from "@/types/typescript-axios";
+import { Rune as RuneType } from "@/types/typescript-axios";
 import React from "react";
 import classes from "./Rune.module.scss";
 
-function Rune(props: { rune: Rune }) {
+function Rune(props: { rune: RuneType }) {
   const { rune } = props;
 
   return (

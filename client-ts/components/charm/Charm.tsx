@@ -1,8 +1,8 @@
-import { Charm } from "@/types/typescript-axios";
+import { Charm as CharmType } from "@/types/typescript-axios";
 import React from "react";
 import classes from "./Charm.module.scss";
 
-function Charm(props: { charm: Charm }) {
+function Charm(props: { charm: CharmType }) {
   const { charm } = props;
 
   return (

@@ -1,9 +1,11 @@
-import { CardsApi } from "@/types/typescript-axios/api";
-import { CharmsApi } from "@/types/typescript-axios/api";
-import { CursesApi } from "@/types/typescript-axios/api";
-import { EffectsApi } from "@/types/typescript-axios/api";
-import { RunesApi } from "@/types/typescript-axios/api";
-import { ToolsApi } from "@/types/typescript-axios/api";
+import {
+  CardsApi,
+  CharmsApi,
+  CursesApi,
+  EffectsApi,
+  RunesApi,
+  ToolsApi,
+} from "@/types/typescript-axios/api";
 
 import { Configuration } from "@/types/typescript-axios/configuration";
 

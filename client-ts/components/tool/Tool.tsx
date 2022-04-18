@@ -1,8 +1,8 @@
-import { Tool } from "@/types/typescript-axios";
+import { Tool as ToolType } from "@/types/typescript-axios";
 import React from "react";
 import classes from "./Tool.module.scss";
 
-function Tool(props: { tool: Tool }) {
+function Tool(props: { tool: ToolType }) {
   const { tool } = props;
 
   return (

@@ -1,8 +1,8 @@
-import { Card } from "@/types/typescript-axios";
+import { Card as CardType } from "@/types/typescript-axios";
 import React from "react";
 import classes from "./Card.module.scss";
 
-function Card(props: { card: Card }) {
+function Card(props: { card: CardType }) {
   const { card } = props;
 
   const effectImgSrc = `/images/templates/card/stats/${card.effect}.png`;

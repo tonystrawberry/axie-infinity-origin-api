@@ -1,7 +1,7 @@
 import classes from "./Navbar.module.scss";
 import ActiveLink from "@/components/active-link/ActiveLink";
 
-function Navbar(props) {
+function Navbar() {
   return (
     <header className={classes.header}>
       <ul className={classes.navMobile}>
