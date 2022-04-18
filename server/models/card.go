@@ -1,8 +1,7 @@
 package main
 
 import (
-    "database/sql"
-    "errors"
+	"errors"
 )
 
 

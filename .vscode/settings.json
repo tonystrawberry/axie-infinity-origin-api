@@ -1,0 +1,6 @@
+{
+  "sonarlint.connectedMode.project": {
+    "connectionId": "sonarcloud",
+    "projectKey": "i-love-burgers_axie-infinity-origin-api"
+  }
+}
